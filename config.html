@@ -1,0 +1,72 @@
+<?php
+
+// set to defaults if undefined (CAS)
+if (!isset ($config->hostname)) {
+    $config->hostname = '';
+}
+if (!isset ($config->baseuri)) {
+    $config->baseuri = '';
+}
+if (!isset ($config->port)) {
+    $config->port = '';
+}
+if (!isset ($config->multiauth)) {
+    $config->multiauth = '';
+}
+
+$yesno = array( get_string('no'), get_string('yes') );
+
+?>
+<table cellspacing="0" cellpadding="5" border="0">
+<tr>
+    <td colspan="2">
+        <h4>Configuraci&oacute;n del Servidor CAS - Gobierno de La Rioja</h4>
+    </td>
+</tr>
+<tr valign="top" class="required">
+    <td align="right">Hostname:</td>
+    <td>
+        <input name="hostname" type="text" size="30" value="<?php echo $config->hostname ?>" />
+        <?php if (isset($err['hostname'])) { echo $OUTPUT->error_text($err['hostname']); } ?>
+    </td>
+    <td>
+        Nombre del servidor CAS<br/>
+		e.g.: ias1.larioja.org 
+    </td>
+</tr>
+<tr valign="top" class="required">
+    <td align="right">
+        URI Base:
+    </td>
+    <td>
+        <input name="baseuri" type="text" size="30" value="<?php echo $config->baseuri ?>" />
+        <?php if (isset($err['baseuri'])) { echo $OUTPUT->error_text($err['baseuri']); } ?>
+    </td>
+    <td>
+        URI del servidor 
+    </td>
+</tr>
+<tr valign="top" class="required">
+    <td align="right">
+        <?php print_string('auth_cas_port_key', 'auth_cas') ?>:
+    </td>
+    <td>
+        <input name="port" type="text" size="30" value="<?php echo $config->port ?>" />
+        <?php if (isset($err['port'])) { echo $OUTPUT->error_text($err['port']); } ?>
+    </td>
+    <td>
+        <?php print_string('auth_cas_port', 'auth_cas') ?>
+    </td>
+</tr>
+<tr valign="top" class="required">
+    <td align="right">
+        MultiAuth:
+    </td>
+    <td>
+		<?php echo html_writer::select($yesno, 'multiauth', $config->multiauth, false); ?> 
+    </td>
+    <td>
+        Activar multiautentificaci&oacute;n
+    </td>
+</tr>
+</table>
