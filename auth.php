@@ -7,7 +7,7 @@
  *
  * Authentication Plugin: Servidor CAS - Gobierno de La Rioja
  *
- * 2012-03-06  Fin de edición.
+ * 2012-05-24  Fin de edición.
  */
 
 if (!defined('MOODLE_INTERNAL')) {
